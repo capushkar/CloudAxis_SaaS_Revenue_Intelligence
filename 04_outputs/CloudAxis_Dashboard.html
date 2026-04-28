@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0065)file:///Users/resonantenergy/Downloads/CloudAxis_Dashboard_3.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CloudAxis Revenue Intelligence</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="./Cloudaxis Dashboard_files/chart.umd.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
 
@@ -99,54 +99,321 @@
     <h1>CloudAxis Inc. — Revenue Intelligence</h1>
     <p>ASC 606 · 50 Customers · 24 Months (2023-01 → 2024-12)<span class="badge">Phase 3</span></p>
   </div>
-  <div class="header-right">Built by Pushkar Agrawal · CA · The Finance Forge</div>
+  <div class="header-right" style="display:flex;align-items:center;gap:12px">
+    <div style="position:relative">
+      <button onclick="toggleDownloadMenu()" style="background:#1E293B;border:1px solid #334155;color:#94A3B8;padding:6px 14px;border-radius:6px;font-size:11px;cursor:pointer;font-family:&#39;IBM Plex Mono&#39;,monospace;display:flex;align-items:center;gap:6px">
+        ⬇ Download
+      </button>
+      <div id="download-menu" style="display:none;position:absolute;right:0;top:34px;background:#1E293B;border:1px solid #334155;border-radius:8px;min-width:200px;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.4)">
+        <div style="padding:8px 0">
+          <div style="padding:6px 14px;font-size:10px;color:#475569;font-family:&#39;IBM Plex Mono&#39;,monospace;text-transform:uppercase;letter-spacing:.1em">Export CSV</div>
+          <div onclick="downloadCSV(&#39;mrr&#39;)" style="padding:8px 16px;font-size:12px;color:#CBD5E1;cursor:pointer;hover:background:#334155" onmouseover="this.style.background=&#39;#334155&#39;" onmouseout="this.style.background=&#39;&#39;">MRR Waterfall</div>
+          <div onclick="downloadCSV(&#39;nrr&#39;)" style="padding:8px 16px;font-size:12px;color:#CBD5E1;cursor:pointer" onmouseover="this.style.background=&#39;#334155&#39;" onmouseout="this.style.background=&#39;&#39;">NRR &amp; GRR</div>
+          <div onclick="downloadCSV(&#39;ltv&#39;)" style="padding:8px 16px;font-size:12px;color:#CBD5E1;cursor:pointer" onmouseover="this.style.background=&#39;#334155&#39;" onmouseout="this.style.background=&#39;&#39;">LTV : CAC</div>
+          <div onclick="downloadCSV(&#39;bil&#39;)" style="padding:8px 16px;font-size:12px;color:#CBD5E1;cursor:pointer" onmouseover="this.style.background=&#39;#334155&#39;" onmouseout="this.style.background=&#39;&#39;">Billings vs Revenue</div>
+          <div onclick="downloadCSV(&#39;rpo&#39;)" style="padding:8px 16px;font-size:12px;color:#CBD5E1;cursor:pointer" onmouseover="this.style.background=&#39;#334155&#39;" onmouseout="this.style.background=&#39;&#39;">RPO Schedule</div>
+          <div onclick="downloadCSV(&#39;com&#39;)" style="padding:8px 16px;font-size:12px;color:#CBD5E1;cursor:pointer" onmouseover="this.style.background=&#39;#334155&#39;" onmouseout="this.style.background=&#39;&#39;">Commission Asset</div>
+          <div style="border-top:1px solid #334155;margin:4px 0"></div>
+          <div onclick="downloadAllCSV()" style="padding:8px 16px;font-size:12px;color:#60A5FA;cursor:pointer;font-weight:600" onmouseover="this.style.background=&#39;#334155&#39;" onmouseout="this.style.background=&#39;&#39;">⬇ Download All (ZIP)</div>
+        </div>
+      </div>
+    </div>
+    <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:11px;color:#6B7280">Built by Pushkar Agrawal · CA · The Finance Forge</span>
+  </div>
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="showPage('mrr')">MRR Waterfall</div>
-  <div class="tab" onclick="showPage('retention')">NRR & GRR</div>
-  <div class="tab" onclick="showPage('cohort')">Cohort Retention</div>
-  <div class="tab" onclick="showPage('ltvcac')">LTV : CAC</div>
-  <div class="tab" onclick="showPage('asc606')">ASC 606 Disclosures</div>
+  <div class="tab active" onclick="showPage(&#39;mrr&#39;)">MRR Waterfall</div>
+  <div class="tab" onclick="showPage(&#39;retention&#39;)">NRR &amp; GRR</div>
+  <div class="tab" onclick="showPage(&#39;cohort&#39;)">Cohort Retention</div>
+  <div class="tab" onclick="showPage(&#39;ltvcac&#39;)">LTV : CAC</div>
+  <div class="tab" onclick="showPage(&#39;asc606&#39;)">ASC 606 Disclosures</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ PAGE 1: MRR -->
 <div class="page active" id="page-mrr">
-  <div class="kpi-row" id="kpi-mrr"></div>
+  <div class="kpi-row" id="kpi-mrr">
+    <div class="card">
+      <div class="card-title">Total MRR</div>
+      <div class="kpi-val">$197,088</div>
+      <div class="kpi-sub">Dec 2024</div>
+      <div class="kpi-delta up">0.1% MoM</div>
+    </div>
+    <div class="card">
+      <div class="card-title">ARR</div>
+      <div class="kpi-val">$2,365,052</div>
+      <div class="kpi-sub">Annualised run-rate</div>
+      
+    </div>
+    <div class="card">
+      <div class="card-title">Active Customers</div>
+      <div class="kpi-val">41</div>
+      <div class="kpi-sub">Non-trial paying</div>
+      
+    </div>
+    <div class="card">
+      <div class="card-title">New MRR (cumul.)</div>
+      <div class="kpi-val">$225,114</div>
+      <div class="kpi-sub">All time</div>
+      
+    </div>
+    <div class="card">
+      <div class="card-title">Net New MRR (cumul.)</div>
+      <div class="kpi-val">$198,140</div>
+      <div class="kpi-sub">All time</div>
+      
+    </div></div>
   <div class="chart-grid two" style="margin-bottom:16px">
     <div class="chart-card">
       <h3>Monthly MRR Movement</h3>
       <p>New · Expansion · Contraction · Churn stacked by month</p>
-      <div class="chart-wrap"><canvas id="c-mrr-stacked"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-mrr-stacked" width="722" height="260" style="display: block; box-sizing: border-box; height: 260px; width: 722px;"></canvas></div>
     </div>
     <div class="chart-card">
       <h3>ARR Trend</h3>
       <p>Annualised run-rate revenue trajectory</p>
-      <div class="chart-wrap"><canvas id="c-arr"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-arr" width="722" height="260" style="display: block; box-sizing: border-box; height: 260px; width: 722px;"></canvas></div>
     </div>
   </div>
   <div class="section-label">Monthly Detail</div>
-  <div class="card"><table id="t-mrr"></table></div>
+  <div class="card"><table id="t-mrr"><tbody><tr><th>Period</th><th>New MRR</th><th>Expansion</th><th>Contraction</th><th>Churn</th><th>Net New MRR</th><th>Total MRR</th><th>ARR</th><th>Customers</th></tr><tr>
+      <td>2023-01</td><td>$16,398</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$16,398</td>
+      <td>$16,398</td><td>$196,772</td><td>4</td>
+    </tr><tr>
+      <td>2023-02</td><td>$10,212</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$10,212</td>
+      <td>$26,610</td><td>$319,320</td><td>6</td>
+    </tr><tr>
+      <td>2023-03</td><td>$13,705</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$13,705</td>
+      <td>$40,448</td><td>$485,376</td><td>10</td>
+    </tr><tr>
+      <td>2023-04</td><td>$31,029</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(644)</td>
+      <td style="color:#059669;font-weight:600">$30,385</td>
+      <td>$71,374</td><td>$856,487</td><td>16</td>
+    </tr><tr>
+      <td>2023-05</td><td>$6,346</td><td>$516</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$6,862</td>
+      <td>$77,622</td><td>$931,459</td><td>17</td>
+    </tr><tr>
+      <td>2023-06</td><td>$40,050</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$40,050</td>
+      <td>$117,651</td><td>$1,411,810</td><td>24</td>
+    </tr><tr>
+      <td>2023-07</td><td>$7,907</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$7,907</td>
+      <td>$125,842</td><td>$1,510,107</td><td>26</td>
+    </tr><tr>
+      <td>2023-08</td><td>$17,642</td><td>$5,524</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$23,165</td>
+      <td>$149,023</td><td>$1,788,281</td><td>31</td>
+    </tr><tr>
+      <td>2023-09</td><td>$2,773</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$2,773</td>
+      <td>$150,099</td><td>$1,801,189</td><td>33</td>
+    </tr><tr>
+      <td>2023-10</td><td>$7,016</td><td>$3,305</td>
+      <td style="color:#DC2626">(142)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$10,179</td>
+      <td>$160,918</td><td>$1,931,020</td><td>35</td>
+    </tr><tr>
+      <td>2023-11</td><td>$9,856</td><td>$2,439</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$12,295</td>
+      <td>$173,378</td><td>$2,080,537</td><td>37</td>
+    </tr><tr>
+      <td>2023-12</td><td>$2,949</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(5,714)</td>
+      <td style="color:#DC2626;font-weight:600">$-2,766</td>
+      <td>$177,568</td><td>$2,130,820</td><td>39</td>
+    </tr><tr>
+      <td>2024-01</td><td>$17,218</td><td>$1,034</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$18,252</td>
+      <td>$189,600</td><td>$2,275,199</td><td>40</td>
+    </tr><tr>
+      <td>2024-02</td><td>$20,290</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(5,596)</td>
+      <td style="color:#059669;font-weight:600">$14,695</td>
+      <td>$210,164</td><td>$2,521,964</td><td>43</td>
+    </tr><tr>
+      <td>2024-03</td><td>$4,197</td><td>$1,353</td>
+      <td style="color:#DC2626">(153)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$5,398</td>
+      <td>$208,914</td><td>$2,506,969</td><td>44</td>
+    </tr><tr>
+      <td>2024-04</td><td>$4,177</td><td>$445</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(2,913)</td>
+      <td style="color:#059669;font-weight:600">$4,168</td>
+      <td>$214,468</td><td>$2,573,618</td><td>46</td>
+    </tr><tr>
+      <td>2024-05</td><td>$13,348</td><td>$0</td>
+      <td style="color:#DC2626">(1,358)</td>
+      <td style="color:#DC2626">(13,411)</td>
+      <td style="color:#DC2626;font-weight:600">$-1,421</td>
+      <td>$225,352</td><td>$2,704,222</td><td>47</td>
+    </tr><tr>
+      <td>2024-06</td><td>$0</td><td>$728</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(12,540)</td>
+      <td style="color:#DC2626;font-weight:600">$-11,812</td>
+      <td>$211,835</td><td>$2,542,020</td><td>46</td>
+    </tr><tr>
+      <td>2024-07</td><td>$0</td><td>$1,551</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$1,551</td>
+      <td>$201,265</td><td>$2,415,179</td><td>43</td>
+    </tr><tr>
+      <td>2024-08</td><td>$0</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(1,251)</td>
+      <td style="color:#DC2626;font-weight:600">$-1,251</td>
+      <td>$201,071</td><td>$2,412,854</td><td>43</td>
+    </tr><tr>
+      <td>2024-09</td><td>$0</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(2,125)</td>
+      <td style="color:#DC2626;font-weight:600">$-2,125</td>
+      <td>$199,149</td><td>$2,389,793</td><td>42</td>
+    </tr><tr>
+      <td>2024-10</td><td>$0</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$0</td>
+      <td>$198,581</td><td>$2,382,973</td><td>41</td>
+    </tr><tr>
+      <td>2024-11</td><td>$0</td><td>$0</td>
+      <td style="color:#DC2626">(479)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626;font-weight:600">$-479</td>
+      <td>$196,905</td><td>$2,362,860</td><td>41</td>
+    </tr><tr>
+      <td>2024-12</td><td>$0</td><td>$0</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#DC2626">(0)</td>
+      <td style="color:#059669;font-weight:600">$0</td>
+      <td>$197,088</td><td>$2,365,052</td><td>41</td>
+    </tr></tbody></table></div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ PAGE 2: RETENTION -->
 <div class="page" id="page-retention">
-  <div class="kpi-row" id="kpi-nrr"></div>
+  <div class="kpi-row" id="kpi-nrr"><div class="card">
+    <div class="card-title">Latest NRR</div>
+    <div class="kpi-val" style="font-size:18px">83.6%</div>
+    <div class="kpi-sub">2024-12</div>
+    <div class="kpi-delta down">Below 100% — net contraction</div>
+  </div><div class="card">
+    <div class="card-title">Latest GRR</div>
+    <div class="kpi-val" style="font-size:18px">82.1%</div>
+    <div class="kpi-sub">Excl. expansion</div>
+    <div class="kpi-delta neutral">Floor churn rate 17.9%</div>
+  </div><div class="card">
+    <div class="card-title">NRR Range</div>
+    <div class="kpi-val" style="font-size:18px">83.6% – 107.6%</div>
+    <div class="kpi-sub">Min – Max over 12mo</div>
+    
+  </div><div class="card">
+    <div class="card-title">Avg NRR (12mo)</div>
+    <div class="kpi-val" style="font-size:18px">94.7%</div>
+    <div class="kpi-sub">Rolling average</div>
+    
+  </div><div class="card">
+    <div class="card-title">Periods Measured</div>
+    <div class="kpi-val" style="font-size:18px">12 months</div>
+    <div class="kpi-sub">12-month lookback</div>
+    
+  </div></div>
   <div class="note">NRR measures revenue growth from existing customers including expansion. GRR excludes expansion — it shows the floor. NRR &gt; 100% means the business grows even with churn.</div>
   <div class="chart-grid two" style="margin-bottom:16px">
     <div class="chart-card">
       <h3>NRR vs GRR — Rolling 12-Month</h3>
       <p>Based on customers active 12 months prior</p>
-      <div class="chart-wrap"><canvas id="c-nrr"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-nrr" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
     <div class="chart-card">
       <h3>MRR Bridge: Start → End of Period</h3>
       <p>How MRR components change month over month</p>
-      <div class="chart-wrap"><canvas id="c-net-new"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-net-new" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
   </div>
   <div class="section-label">NRR / GRR Detail</div>
-  <div class="card"><table id="t-nrr"></table></div>
+  <div class="card"><table id="t-nrr"><tbody><tr><th>Period</th><th>Starting MRR</th><th>Ending MRR</th><th>NRR</th><th>GRR</th></tr><tr>
+      <td>2024-01</td><td>$16,398</td><td>$16,342</td>
+      <td style="font-weight:600;color:#DC2626">99.7%</td>
+      <td style="color:#0891B2">96.5%</td>
+    </tr><tr>
+      <td>2024-02</td><td>$26,610</td><td>$26,569</td>
+      <td style="font-weight:600;color:#DC2626">99.8%</td>
+      <td style="color:#0891B2">97.9%</td>
+    </tr><tr>
+      <td>2024-03</td><td>$40,448</td><td>$40,675</td>
+      <td style="font-weight:600;color:#059669">100.6%</td>
+      <td style="color:#0891B2">98.2%</td>
+    </tr><tr>
+      <td>2024-04</td><td>$71,374</td><td>$76,769</td>
+      <td style="font-weight:600;color:#059669">107.6%</td>
+      <td style="color:#0891B2">99.1%</td>
+    </tr><tr>
+      <td>2024-05</td><td>$77,622</td><td>$77,604</td>
+      <td style="font-weight:600;color:#059669">100.0%</td>
+      <td style="color:#0891B2">92.6%</td>
+    </tr><tr>
+      <td>2024-06</td><td>$117,651</td><td>$122,108</td>
+      <td style="font-weight:600;color:#059669">103.8%</td>
+      <td style="color:#0891B2">95.0%</td>
+    </tr><tr>
+      <td>2024-07</td><td>$125,842</td><td>$118,171</td>
+      <td style="font-weight:600;color:#DC2626">93.9%</td>
+      <td style="color:#0891B2">85.2%</td>
+    </tr><tr>
+      <td>2024-08</td><td>$149,023</td><td>$130,859</td>
+      <td style="font-weight:600;color:#DC2626">87.8%</td>
+      <td style="color:#0891B2">83.8%</td>
+    </tr><tr>
+      <td>2024-09</td><td>$150,099</td><td>$132,552</td>
+      <td style="font-weight:600;color:#DC2626">88.3%</td>
+      <td style="color:#0891B2">84.3%</td>
+    </tr><tr>
+      <td>2024-10</td><td>$160,918</td><td>$138,994</td>
+      <td style="font-weight:600;color:#DC2626">86.4%</td>
+      <td style="color:#0891B2">84.1%</td>
+    </tr><tr>
+      <td>2024-11</td><td>$173,378</td><td>$148,082</td>
+      <td style="font-weight:600;color:#DC2626">85.4%</td>
+      <td style="color:#0891B2">83.7%</td>
+    </tr><tr>
+      <td>2024-12</td><td>$177,568</td><td>$148,394</td>
+      <td style="font-weight:600;color:#DC2626">83.6%</td>
+      <td style="color:#0891B2">82.1%</td>
+    </tr></tbody></table></div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ PAGE 3: COHORT -->
@@ -155,65 +422,285 @@
   <div class="chart-card" style="margin-bottom:16px">
     <h3>Cohort MRR Retention Heatmap</h3>
     <p>Row = cohort · Column = months since first payment</p>
-    <div class="heatmap-wrap" id="cohort-heatmap"></div>
+    <div class="heatmap-wrap" id="cohort-heatmap"><table class="heatmap"><tbody><tr><th>Cohort</th><th>n</th><th>M+0</th><th>M+1</th><th>M+2</th><th>M+3</th><th>M+4</th><th>M+5</th><th>M+6</th><th>M+7</th><th>M+8</th><th>M+9</th><th>M+10</th><th>M+11</th><th>M+12</th><th>M+13</th><th>M+14</th><th>M+15</th><th>M+16</th><th>M+17</th><th>M+18</th><th>M+19</th><th>M+20</th><th>M+21</th><th>M+22</th><th>M+23</th></tr><tr><td style="font-weight:500;white-space:nowrap">2023-01</td><td style="color:#D97706;font-weight:600;background:#F8FAFC">4</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">101%</td><td class="hm-100">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-02</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-90">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">101%</td><td class="hm-100">100%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-03</td><td style="color:#D97706;font-weight:600;background:#F8FAFC">4</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-04</td><td style="color:#374151;font-weight:600;background:#F8FAFC">6</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">101%</td><td class="hm-100">117%</td><td class="hm-100">117%</td><td class="hm-100">116%</td><td class="hm-100">117%</td><td class="hm-100">116%</td><td class="hm-100">117%</td><td class="hm-100">117%</td><td class="hm-100">116%</td><td class="hm-100">116%</td><td class="hm-100">116%</td><td class="hm-100">117%</td><td class="hm-100">116%</td><td class="hm-100">116%</td><td class="hm-100">117%</td><td class="hm-100">117%</td><td class="hm-100">116%</td><td class="hm-100">117%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-05</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-100">103%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-low">13%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-06</td><td style="color:#374151;font-weight:600;background:#F8FAFC">7</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">101%</td><td class="hm-100">100%</td><td class="hm-100">107%</td><td class="hm-100">112%</td><td class="hm-100">111%</td><td class="hm-100">110%</td><td class="hm-100">110%</td><td class="hm-100">110%</td><td class="hm-100">110%</td><td class="hm-100">110%</td><td class="hm-100">110%</td><td class="hm-70">79%</td><td class="hm-70">79%</td><td class="hm-70">79%</td><td class="hm-70">79%</td><td class="hm-70">79%</td><td class="hm-70">79%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-07</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-90">96%</td><td class="hm-90">94%</td><td class="hm-90">94%</td><td class="hm-100">112%</td><td class="hm-100">120%</td><td class="hm-100">119%</td><td class="hm-100">119%</td><td class="hm-100">112%</td><td class="hm-100">112%</td><td class="hm-100">119%</td><td class="hm-100">120%</td><td class="hm-100">112%</td><td class="hm-100">113%</td><td class="hm-100">112%</td><td class="hm-100">118%</td><td class="hm-100">118%</td><td class="hm-100">112%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-08</td><td style="color:#374151;font-weight:600;background:#F8FAFC">5</td><td class="hm-100">100%</td><td class="hm-90">94%</td><td class="hm-90">98%</td><td class="hm-90">94%</td><td class="hm-100">101%</td><td class="hm-100">105%</td><td class="hm-100">106%</td><td class="hm-70">73%</td><td class="hm-80">82%</td><td class="hm-70">70%</td><td class="hm-60">66%</td><td class="hm-70">71%</td><td class="hm-70">71%</td><td class="hm-60">66%</td><td class="hm-70">71%</td><td class="hm-60">66%</td><td class="hm-60">66%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-09</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-90">95%</td><td class="hm-90">95%</td><td class="hm-90">95%</td><td class="hm-90">95%</td><td class="hm-90">95%</td><td class="hm-90">95%</td><td class="hm-90">95%</td><td class="hm-low">18%</td><td class="hm-low">18%</td><td class="hm-low">18%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-10</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-100">104%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-11</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">111%</td><td class="hm-100">115%</td><td class="hm-100">101%</td><td class="hm-100">101%</td><td class="hm-100">101%</td><td class="hm-100">101%</td><td class="hm-100">101%</td><td class="hm-100">101%</td><td class="hm-100">101%</td><td class="hm-100">101%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2023-12</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-60">64%</td><td class="hm-60">64%</td><td class="hm-60">64%</td><td class="hm-low">21%</td><td class="hm-low">21%</td><td class="hm-low">21%</td><td class="hm-low">21%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2024-01</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-low">28%</td><td class="hm-low">28%</td><td class="hm-low">28%</td><td class="hm-low">28%</td><td class="hm-low">28%</td><td class="hm-low">28%</td><td class="hm-low">28%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2024-02</td><td style="color:#D97706;font-weight:600;background:#F8FAFC">3</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">102%</td><td class="hm-100">102%</td><td class="hm-100">105%</td><td class="hm-100">105%</td><td class="hm-100">105%</td><td class="hm-100">105%</td><td class="hm-100">105%</td><td class="hm-100">105%</td><td class="hm-100">105%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2024-03</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-80">85%</td><td class="hm-90">98%</td><td class="hm-80">85%</td><td class="hm-100">122%</td><td class="hm-100">123%</td><td class="hm-100">125%</td><td class="hm-100">132%</td><td class="hm-100">129%</td><td class="hm-100">136%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2024-04</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">2</td><td class="hm-100">100%</td><td class="hm-90">96%</td><td class="hm-90">96%</td><td class="hm-100">104%</td><td class="hm-90">96%</td><td class="hm-90">100%</td><td class="hm-90">100%</td><td class="hm-90">96%</td><td class="hm-100">101%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr><tr><td style="font-weight:500;white-space:nowrap">2024-05</td><td style="color:#DC2626;font-weight:600;background:#F8FAFC">1</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-100">100%</td><td class="hm-90">96%</td><td class="hm-90">96%</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td><td class="hm-na">—</td></tr></tbody></table></div>
   </div>
   <div class="chart-card">
     <h3>Cohort Retention Curves</h3>
     <p>Select cohorts to compare retention trajectories</p>
-    <div class="chart-wrap"><canvas id="c-cohort-lines" style="max-height:240px"></canvas></div>
+    <div class="chart-wrap"><canvas id="c-cohort-lines" style="max-height: 240px; display: block; box-sizing: border-box; height: 0px; width: 0px;" height="0" width="0"></canvas></div>
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ PAGE 4: LTV:CAC -->
 <div class="page" id="page-ltvcac">
   <div class="seg-pills">
-    <div class="seg-pill active" onclick="filterSeg(this,'All')">All Segments</div>
-    <div class="seg-pill" onclick="filterSeg(this,'SMB')">SMB</div>
-    <div class="seg-pill" onclick="filterSeg(this,'Mid-Market')">Mid-Market</div>
-    <div class="seg-pill" onclick="filterSeg(this,'Enterprise')">Enterprise</div>
+    <div class="seg-pill active" onclick="filterSeg(this,&#39;All&#39;)">All Segments</div>
+    <div class="seg-pill" onclick="filterSeg(this,&#39;SMB&#39;)">SMB</div>
+    <div class="seg-pill" onclick="filterSeg(this,&#39;Mid-Market&#39;)">Mid-Market</div>
+    <div class="seg-pill" onclick="filterSeg(this,&#39;Enterprise&#39;)">Enterprise</div>
   </div>
-  <div class="kpi-row" id="kpi-ltv"></div>
+  <div class="kpi-row" id="kpi-ltv"><div class="card">
+    <div class="card-title">Avg LTV</div>
+    <div class="kpi-val" style="font-size:20px">$206,995</div>
+    <div class="kpi-sub">Trailing 12-mo avg</div>
+  </div><div class="card">
+    <div class="card-title">Avg CAC</div>
+    <div class="kpi-val" style="font-size:20px">$40,600</div>
+    <div class="kpi-sub">Periods with new customers</div>
+  </div><div class="card">
+    <div class="card-title">LTV:CAC</div>
+    <div class="kpi-val" style="font-size:20px">21.6x</div>
+    <div class="kpi-sub">Target ≥ 3×</div>
+  </div><div class="card">
+    <div class="card-title">Payback</div>
+    <div class="kpi-val" style="font-size:20px">8 mo</div>
+    <div class="kpi-sub">Avg months (acq periods)</div>
+  </div><div class="card">
+    <div class="card-title">Gross Margin</div>
+    <div class="kpi-val" style="font-size:20px">72%</div>
+    <div class="kpi-sub">Model assumption</div>
+  </div></div>
   <div class="chart-grid two" style="margin-bottom:16px">
     <div class="chart-card">
       <h3>LTV : CAC Ratio by Segment</h3>
       <p>Target ≥ 3× for sustainable unit economics</p>
-      <div class="chart-wrap"><canvas id="c-ltvcac"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-ltvcac" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
     <div class="chart-card">
       <h3>Payback Period (months)</h3>
       <p>How long to recover customer acquisition cost</p>
-      <div class="chart-wrap"><canvas id="c-payback"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-payback" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
   </div>
   <div class="section-label">Detail Table</div>
-  <div class="card"><table id="t-ltv"></table></div>
+  <div class="card"><table id="t-ltv"><tbody><tr><th>Period</th><th>Segment</th><th>Active</th><th>Avg MRR</th><th>Churn%</th><th>LTV</th><th>CAC</th><th>LTV:CAC</th><th>Payback</th></tr><tr>
+      <td>2023-03</td><td>Enterprise</td><td>2</td>
+      <td>$5,925</td><td>0.5%</td>
+      <td>$255,957</td><td>$15,644</td>
+      <td style="font-weight:600;color:#059669">16.4x</td>
+      <td>4 mo</td>
+    </tr><tr>
+      <td>2023-04</td><td>SMB</td><td>9</td>
+      <td>$2,523</td><td>0.5%</td>
+      <td>$108,996</td><td>$5,316</td>
+      <td style="font-weight:600;color:#059669">20.5x</td>
+      <td>3 mo</td>
+    </tr><tr>
+      <td>2023-04</td><td>Mid-Market</td><td>3</td>
+      <td>$6,704</td><td>0.5%</td>
+      <td>$289,620</td><td>$41,203</td>
+      <td style="font-weight:600;color:#059669">7.0x</td>
+      <td>9 mo</td>
+    </tr><tr>
+      <td>2023-04</td><td>Enterprise</td><td>4</td>
+      <td>$7,139</td><td>0.5%</td>
+      <td>$308,383</td><td>$71,825</td>
+      <td style="font-weight:600;color:#059669">4.3x</td>
+      <td>14 mo</td>
+    </tr><tr>
+      <td>2023-05</td><td>SMB</td><td>9</td>
+      <td>$2,582</td><td>0.5%</td>
+      <td>$111,555</td><td>$3,250</td>
+      <td style="font-weight:600;color:#059669">34.3x</td>
+      <td>2 mo</td>
+    </tr><tr>
+      <td>2023-05</td><td>Mid-Market</td><td>4</td>
+      <td>$6,457</td><td>0.5%</td>
+      <td>$278,931</td><td>$47,022</td>
+      <td style="font-weight:600;color:#059669">5.9x</td>
+      <td>10 mo</td>
+    </tr><tr>
+      <td>2023-06</td><td>SMB</td><td>10</td>
+      <td>$2,363</td><td>0.5%</td>
+      <td>$102,092</td><td>$2,120</td>
+      <td style="font-weight:600;color:#059669">48.2x</td>
+      <td>1 mo</td>
+    </tr><tr>
+      <td>2023-06</td><td>Mid-Market</td><td>6</td>
+      <td>$5,731</td><td>0.5%</td>
+      <td>$247,580</td><td>$17,607</td>
+      <td style="font-weight:600;color:#059669">14.1x</td>
+      <td>4 mo</td>
+    </tr><tr>
+      <td>2023-06</td><td>Enterprise</td><td>8</td>
+      <td>$7,454</td><td>0.5%</td>
+      <td>$322,015</td><td>$71,793</td>
+      <td style="font-weight:600;color:#059669">4.5x</td>
+      <td>13 mo</td>
+    </tr><tr>
+      <td>2023-07</td><td>Mid-Market</td><td>8</td>
+      <td>$5,287</td><td>0.5%</td>
+      <td>$228,384</td><td>$30,608</td>
+      <td style="font-weight:600;color:#059669">7.5x</td>
+      <td>8 mo</td>
+    </tr><tr>
+      <td>2023-08</td><td>SMB</td><td>13</td>
+      <td>$2,521</td><td>0.5%</td>
+      <td>$108,902</td><td>$11,657</td>
+      <td style="font-weight:600;color:#059669">9.3x</td>
+      <td>6 mo</td>
+    </tr><tr>
+      <td>2023-08</td><td>Mid-Market</td><td>10</td>
+      <td>$5,345</td><td>0.5%</td>
+      <td>$230,889</td><td>$33,452</td>
+      <td style="font-weight:600;color:#059669">6.9x</td>
+      <td>9 mo</td>
+    </tr><tr>
+      <td>2023-09</td><td>SMB</td><td>14</td>
+      <td>$2,316</td><td>0.5%</td>
+      <td>$100,061</td><td>$3,334</td>
+      <td style="font-weight:600;color:#059669">30.0x</td>
+      <td>2 mo</td>
+    </tr><tr>
+      <td>2023-09</td><td>Enterprise</td><td>9</td>
+      <td>$7,153</td><td>0.5%</td>
+      <td>$309,018</td><td>$10,929</td>
+      <td style="font-weight:600;color:#059669">28.3x</td>
+      <td>2 mo</td>
+    </tr><tr>
+      <td>2023-10</td><td>SMB</td><td>15</td>
+      <td>$2,294</td><td>0.5%</td>
+      <td>$99,084</td><td>$4,208</td>
+      <td style="font-weight:600;color:#059669">23.5x</td>
+      <td>3 mo</td>
+    </tr><tr>
+      <td>2023-10</td><td>Mid-Market</td><td>11</td>
+      <td>$5,371</td><td>0.5%</td>
+      <td>$232,030</td><td>$23,816</td>
+      <td style="font-weight:600;color:#059669">9.7x</td>
+      <td>6 mo</td>
+    </tr><tr>
+      <td>2023-11</td><td>Mid-Market</td><td>12</td>
+      <td>$5,523</td><td>0.5%</td>
+      <td>$238,592</td><td>$22,244</td>
+      <td style="font-weight:600;color:#059669">10.7x</td>
+      <td>6 mo</td>
+    </tr><tr>
+      <td>2023-11</td><td>Enterprise</td><td>10</td>
+      <td>$7,347</td><td>0.5%</td>
+      <td>$317,402</td><td>$22,886</td>
+      <td style="font-weight:600;color:#059669">13.9x</td>
+      <td>4 mo</td>
+    </tr><tr>
+      <td>2023-12</td><td>SMB</td><td>17</td>
+      <td>$2,225</td><td>0.5%</td>
+      <td>$96,105</td><td>$5,055</td>
+      <td style="font-weight:600;color:#059669">19.0x</td>
+      <td>3 mo</td>
+    </tr><tr>
+      <td>2024-01</td><td>Mid-Market</td><td>12</td>
+      <td>$5,589</td><td>1.1%</td>
+      <td>$241,458</td><td>$20,086</td>
+      <td style="font-weight:600;color:#059669">12.0x</td>
+      <td>5 mo</td>
+    </tr><tr>
+      <td>2024-01</td><td>Enterprise</td><td>11</td>
+      <td>$7,729</td><td>0.5%</td>
+      <td>$333,887</td><td>$63,441</td>
+      <td style="font-weight:600;color:#059669">5.3x</td>
+      <td>11 mo</td>
+    </tr><tr>
+      <td>2024-02</td><td>SMB</td><td>18</td>
+      <td>$2,254</td><td>1.7%</td>
+      <td>$93,852</td><td>$10,023</td>
+      <td style="font-weight:600;color:#059669">9.4x</td>
+      <td>6 mo</td>
+    </tr><tr>
+      <td>2024-02</td><td>Mid-Market</td><td>13</td>
+      <td>$5,225</td><td>1.0%</td>
+      <td>$225,701</td><td>$7,464</td>
+      <td style="font-weight:600;color:#059669">30.2x</td>
+      <td>2 mo</td>
+    </tr><tr>
+      <td>2024-02</td><td>Enterprise</td><td>12</td>
+      <td>$8,472</td><td>0.5%</td>
+      <td>$366,011</td><td>$84,652</td>
+      <td style="font-weight:600;color:#059669">4.3x</td>
+      <td>14 mo</td>
+    </tr><tr>
+      <td>2024-03</td><td>Mid-Market</td><td>14</td>
+      <td>$5,085</td><td>0.9%</td>
+      <td>$219,670</td><td>$7,497</td>
+      <td style="font-weight:600;color:#059669">29.3x</td>
+      <td>2 mo</td>
+    </tr><tr>
+      <td>2024-03</td><td>Enterprise</td><td>13</td>
+      <td>$7,929</td><td>0.5%</td>
+      <td>$342,526</td><td>$8,976</td>
+      <td style="font-weight:600;color:#059669">38.2x</td>
+      <td>2 mo</td>
+    </tr><tr>
+      <td>2024-04</td><td>SMB</td><td>17</td>
+      <td>$2,007</td><td>1.4%</td>
+      <td>$86,716</td><td>$1,273</td>
+      <td style="font-weight:600;color:#059669">68.1x</td>
+      <td>1 mo</td>
+    </tr><tr>
+      <td>2024-04</td><td>Mid-Market</td><td>15</td>
+      <td>$5,018</td><td>1.3%</td>
+      <td>$216,775</td><td>$26,963</td>
+      <td style="font-weight:600;color:#059669">8.0x</td>
+      <td>8 mo</td>
+    </tr><tr>
+      <td>2024-04</td><td>Enterprise</td><td>14</td>
+      <td>$7,505</td><td>0.5%</td>
+      <td>$324,231</td><td>$10,286</td>
+      <td style="font-weight:600;color:#059669">31.5x</td>
+      <td>2 mo</td>
+    </tr><tr>
+      <td>2024-05</td><td>Enterprise</td><td>15</td>
+      <td>$7,804</td><td>1.3%</td>
+      <td>$337,147</td><td>$205,939</td>
+      <td style="font-weight:600;color:#D97706">1.6x</td>
+      <td>37 mo</td>
+    </tr></tbody></table></div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ PAGE 5: ASC 606 -->
 <div class="page" id="page-asc606">
-  <div class="kpi-row" id="kpi-asc606"></div>
+  <div class="kpi-row" id="kpi-asc606"><div class="card">
+    <div class="card-title">Total Billings (all time)</div>
+    <div class="kpi-val" style="font-size:18px">$3,405,276</div>
+    <div class="kpi-sub">Cumulative</div>
+  </div><div class="card">
+    <div class="card-title">Revenue Recognised</div>
+    <div class="kpi-val" style="font-size:18px">$3,554,000</div>
+    <div class="kpi-sub">Cumulative</div>
+  </div><div class="card">
+    <div class="card-title">Closing Deferred Rev</div>
+    <div class="kpi-val" style="font-size:18px">$30,650</div>
+    <div class="kpi-sub">Contract liability</div>
+  </div><div class="card">
+    <div class="card-title">Closing RPO</div>
+    <div class="kpi-val" style="font-size:18px">$447,719</div>
+    <div class="kpi-sub">Committed only</div>
+  </div><div class="card">
+    <div class="card-title">Commission Asset</div>
+    <div class="kpi-val" style="font-size:18px">$207,428</div>
+    <div class="kpi-sub">ASC 340-40</div>
+  </div></div>
   <div class="chart-grid two" style="margin-bottom:16px">
     <div class="chart-card">
       <h3>Billings vs Revenue Recognised</h3>
       <p>Gap = change in deferred revenue + contract asset</p>
-      <div class="chart-wrap"><canvas id="c-billings"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-billings" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
     <div class="chart-card">
       <h3>Deferred Revenue Balance</h3>
       <p>Contract liability — billed but not yet earned</p>
-      <div class="chart-wrap"><canvas id="c-deferred"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-deferred" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
   </div>
   <div class="chart-grid two">
     <div class="chart-card">
       <h3>RPO by Product</h3>
       <p>Remaining performance obligations — committed contracts only</p>
-      <div class="chart-wrap"><canvas id="c-rpo"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-rpo" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
     <div class="chart-card">
       <h3>Commission Asset (ASC 340-40)</h3>
       <p>Capitalised sales commissions amortising over customer life</p>
-      <div class="chart-wrap"><canvas id="c-comm"></canvas></div>
+      <div class="chart-wrap"><canvas id="c-comm" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
     </div>
   </div>
 </div>
@@ -476,16 +963,28 @@ function renderLTV() {
   const all = RAW.ltv;
   const segs = ltvSeg === 'All' ? ['SMB','Mid-Market','Enterprise'] : [ltvSeg];
 
-  // Latest period per segment
+  // Latest period per segment (for LTV)
   const latest = {};
   all.forEach(r => { if (segs.includes(r.segment)) latest[r.segment] = r; });
   const latestArr = Object.values(latest);
 
+  // Trailing 12-month records with CAC > 0 (for CAC-dependent KPIs)
+  const allPeriods = [...new Set(all.map(r=>r.period_month))].sort();
+  const last12Periods = allPeriods.slice(-12);
+  const trailing = all.filter(r => segs.includes(r.segment) && last12Periods.includes(r.period_month) && r.cac > 0);
+  const trailingAll = all.filter(r => segs.includes(r.segment) && last12Periods.includes(r.period_month));
+
+  const avgCAC      = trailing.length ? trailing.reduce((s,r)=>s+r.cac,0)/trailing.length : 0;
+  const avgLTCCAC   = trailing.length ? trailing.reduce((s,r)=>s+r.ltv_cac_ratio,0)/trailing.length : 0;
+  const avgPayback  = trailing.filter(r=>r.payback_months>0).length
+                      ? trailing.filter(r=>r.payback_months>0).reduce((s,r)=>s+r.payback_months,0)/trailing.filter(r=>r.payback_months>0).length : 0;
+  const avgLTV      = trailingAll.length ? trailingAll.reduce((s,r)=>s+r.ltv,0)/trailingAll.length : 0;
+
   document.getElementById('kpi-ltv').innerHTML = [
-    { label:'Avg LTV', val:$k(latestArr.reduce((s,r)=>s+(r.ltv||0),0)/latestArr.length), sub:'Latest period avg', delta:'', dir:'neutral' },
-    { label:'Avg CAC', val:$k(latestArr.reduce((s,r)=>s+(r.cac||0),0)/Math.max(latestArr.filter(r=>r.cac).length,1)), sub:'Commission-based', delta:'', dir:'neutral' },
-    { label:'LTV:CAC', val:x(latestArr.reduce((s,r)=>s+(r.ltv_cac_ratio||0),0)/Math.max(latestArr.filter(r=>r.ltv_cac_ratio).length,1)), sub:'Target ≥ 3×', delta:'', dir:'neutral' },
-    { label:'Payback', val:(latestArr.reduce((s,r)=>s+(r.payback_months||0),0)/Math.max(latestArr.filter(r=>r.payback_months).length,1)).toFixed(0)+' mo', sub:'Avg months', delta:'', dir:'neutral' },
+    { label:'Avg LTV', val:$k(avgLTV), sub:'Trailing 12-mo avg', delta:'', dir:'neutral' },
+    { label:'Avg CAC', val:$k(avgCAC), sub:'Periods with new customers', delta:'', dir:'neutral' },
+    { label:'LTV:CAC', val:x(avgLTCCAC), sub:'Target ≥ 3×', delta:'', dir:'neutral' },
+    { label:'Payback', val:avgPayback ? avgPayback.toFixed(0)+' mo' : '— mo', sub:'Avg months (acq periods)', delta:'', dir:'neutral' },
     { label:'Gross Margin', val:'72%', sub:'Model assumption', delta:'', dir:'neutral' },
   ].map(k=>`<div class="card">
     <div class="card-title">${k.label}</div>
@@ -650,6 +1149,70 @@ renderLTV();
     }}
   });
 })();
+// ── Download helpers ────────────────────────────────────────────────────
+function toggleDownloadMenu() {
+  const m = document.getElementById('download-menu');
+  m.style.display = m.style.display === 'none' ? 'block' : 'none';
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.header-right')) {
+    const m = document.getElementById('download-menu');
+    if (m) m.style.display = 'none';
+  }
+});
+
+const CSV_CONFIGS = {
+  mrr: { data: ()=>RAW.mrr,  filename:'cloudaxis_mrr_waterfall.csv' },
+  nrr: { data: ()=>RAW.nrr,  filename:'cloudaxis_nrr_grr.csv' },
+  ltv: { data: ()=>RAW.ltv,  filename:'cloudaxis_ltv_cac.csv' },
+  bil: { data: ()=>RAW.bil,  filename:'cloudaxis_billings_vs_revenue.csv' },
+  rpo: { data: ()=>RAW.rpo,  filename:'cloudaxis_rpo_schedule.csv' },
+  com: { data: ()=>RAW.com,  filename:'cloudaxis_commission_asset.csv' },
+};
+
+function toCSV(rows) {
+  if (!rows || !rows.length) return '';
+  const keys = Object.keys(rows[0]);
+  const header = keys.join(',');
+  const body = rows.map(r => keys.map(k => {
+    const v = r[k];
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string' && v.includes(',')) return `"${v}"`;
+    return v;
+  }).join(',')).join('\n');
+  return header + '\n' + body;
+}
+
+function downloadCSV(key) {
+  const cfg = CSV_CONFIGS[key];
+  if (!cfg) return;
+  const csv = toCSV(cfg.data());
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = cfg.filename;
+  a.click();
+  document.getElementById('download-menu').style.display = 'none';
+}
+
+function downloadAllCSV() {
+  // Download each file sequentially with small delay
+  const keys = Object.keys(CSV_CONFIGS);
+  keys.forEach((key, i) => {
+    setTimeout(() => {
+      const cfg = CSV_CONFIGS[key];
+      const csv = toCSV(cfg.data());
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = cfg.filename;
+      a.click();
+    }, i * 300);
+  });
+  document.getElementById('download-menu').style.display = 'none';
+}
+
 </script>
-</body>
-</html>
+
+
+</body></html>
