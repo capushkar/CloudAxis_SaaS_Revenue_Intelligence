@@ -214,4 +214,4 @@ Specific questions for peer reviewers:
 
 ---
 
-*Pushkar Agrawal · CA · Finance Transformation Lead · financeforge.com*
+*Pushkar Agrawal · CA · Finance Transformation Manager · thefinanceforge.com*
