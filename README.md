@@ -3,7 +3,7 @@
 **Author:** Pushkar Agrawal, CA · Finance Transformation Lead  
 **Standard:** US GAAP · ASC 606 · ASC 340-40  
 **Dataset:** Synthetic · 50 customers · 61 contracts · 24 months (Jan 2023 – Dec 2024)  
-**Status:** Peer-reviewed · All validation checks passing
+**Status:** All validation checks passing
 
 ---
 
