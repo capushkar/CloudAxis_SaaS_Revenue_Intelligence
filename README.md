@@ -3,7 +3,7 @@
 **Author:** Pushkar Agrawal, CA · Finance Transformation Lead  
 **Standard:** US GAAP · ASC 606 · ASC 340-40  
 **Dataset:** Synthetic · 50 customers · 61 contracts · 24 months (Jan 2023 – Dec 2024)  
-**Status:** All validation checks passing
+**Status:** Peer-reviewed · All validation checks passing
 
 ---
 
@@ -56,6 +56,23 @@ python 05_disclosure/build_carousel_v2.py
 The Excel model (`04_outputs/`) and dashboard (`04_outputs/`) are pre-built from the final engine run. Open them directly in Excel / any browser.
 
 ---
+
+## Quick access to key files
+
+| File | Path |
+|---|---|
+| Recognition engine | `02_recognition_engine/recognition_engine_fixed.py` |
+| Recognition schedule | `02_recognition_engine/recognition_schedule.csv` |
+| Metrics script | `03_metrics/phase3_metrics.py` |
+| Disclosure inputs script | `03_metrics/build_disclosure_inputs.py` |
+| Excel model | `04_outputs/CloudAxis_Revenue_Intelligence.xlsx` |
+| Interactive dashboard | `04_outputs/CloudAxis_Dashboard.html` |
+| ASC 606 Disclosure PDF | `05_disclosure/CloudAxis_ASC606_Disclosure.pdf` |
+| LinkedIn carousel | `05_disclosure/linkedin_carousel_v2.pdf` |
+| Data dictionary | `04_outputs/CloudAxis_Data_Dictionary.docx` |
+| Blog Part 1 | [The Finance Forge — Quick read](https://www.thefinanceforge.com/post/i-built-a-full-asc-606-reporting-stack-with-ai-here-s-what-that-really-took) |
+| Blog Part 2 | [The Finance Forge — Full methodology](https://www.thefinanceforge.com/post/asc-606-revenue-recognition-at-scale-with-ai-full-methodology-validation-log-and-open-peer-review) |
+| SSRN working paper | Link upon submission |
 
 ## Folder structure
 
@@ -210,6 +227,8 @@ Specific questions for peer reviewers:
 1. Is the prospective treatment for all modification types (including annual upfront downgrades) the right policy choice?
 2. Is a 6% annual churn floor defensible for the LTV calculation, and how would you establish it for different company profiles?
 3. Does the RPO disclosure meet the spirit of ASC 606-10-50-13 through 50-16?
+4. Is the commission rate on full TCV (rather than first-year ACV) consistent with your firm's practice?
+
 ---
 
-*Pushkar Agrawal · CA · Finance Transformation Manager · thefinanceforge.com*
+*Pushkar Agrawal · CA · Finance Transformation Lead · thefinanceforge.com*
