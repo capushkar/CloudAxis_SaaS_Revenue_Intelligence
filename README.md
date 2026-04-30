@@ -210,8 +210,6 @@ Specific questions for peer reviewers:
 1. Is the prospective treatment for all modification types (including annual upfront downgrades) the right policy choice?
 2. Is a 6% annual churn floor defensible for the LTV calculation, and how would you establish it for different company profiles?
 3. Does the RPO disclosure meet the spirit of ASC 606-10-50-13 through 50-16?
-4. Is the commission rate on full TCV (rather than first-year ACV) consistent with your firm's practice?
-
 ---
 
 *Pushkar Agrawal · CA · Finance Transformation Manager · thefinanceforge.com*
