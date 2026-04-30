@@ -117,9 +117,7 @@ The Excel model (`04_outputs/`) and dashboard (`04_outputs/`) are pre-built from
 06_content/
     financeforge_part1.md          Blog post Part 1 (quick read, broad audience)
     financeforge_part2.md          Blog post Part 2 (methodology · peer review)
-    linkedin_post1_final.txt       LinkedIn post for project launch
-    linkedin_post2_final.txt       LinkedIn post (publish months later)
-    linkedin_poster_v2.html        Static poster image (open in Chrome, screenshot)
+    
 ```
 
 ---
