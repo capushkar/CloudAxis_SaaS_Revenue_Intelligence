@@ -68,7 +68,6 @@ The Excel model (`04_outputs/`) and dashboard (`04_outputs/`) are pre-built from
 | Excel model | `04_outputs/CloudAxis_Revenue_Intelligence.xlsx` |
 | Interactive dashboard | `04_outputs/CloudAxis_Dashboard.html` |
 | ASC 606 Disclosure PDF | `05_disclosure/CloudAxis_ASC606_Disclosure.pdf` |
-| LinkedIn carousel | `05_disclosure/linkedin_carousel_v2.pdf` |
 | Data dictionary | `04_outputs/CloudAxis_Data_Dictionary.docx` |
 | Blog Part 1 | [The Finance Forge — Quick read](https://www.thefinanceforge.com/post/i-built-a-full-asc-606-reporting-stack-with-ai-here-s-what-that-really-took) |
 | Blog Part 2 | [The Finance Forge — Full methodology](https://www.thefinanceforge.com/post/asc-606-revenue-recognition-at-scale-with-ai-full-methodology-validation-log-and-open-peer-review) |
