@@ -71,7 +71,7 @@ The Excel model (`04_outputs/`) and dashboard (`04_outputs/`) are pre-built from
 | Data dictionary | `04_outputs/CloudAxis_Data_Dictionary.docx` |
 | Blog Part 1 | [The Finance Forge — Quick read](https://www.thefinanceforge.com/post/i-built-a-full-asc-606-reporting-stack-with-ai-here-s-what-that-really-took) |
 | Blog Part 2 | [The Finance Forge — Full methodology](https://www.thefinanceforge.com/post/asc-606-revenue-recognition-at-scale-with-ai-full-methodology-validation-log-and-open-peer-review) |
-| SSRN working paper | Link upon submission |
+| SSRN working paper | Link - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6685481 |
 
 ## Folder structure
 
